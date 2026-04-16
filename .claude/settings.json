@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "WebFetch(domain:yandex.ru)",
-      "Read(//Users/xorwise/Coding/**)"
-    ]
-  }
-}
