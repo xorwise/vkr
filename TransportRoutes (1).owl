@@ -1,0 +1,960 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/TransportRoutes"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/ontologies/TransportRoutes">
+    <Prefix name="" IRI="http://www.semanticweb.org/ontologies/TransportRoutes"/>
+    <Prefix name="tr" IRI="http://www.semanticweb.org/ontologies/TransportRoutes#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Bus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CityBuilding"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CityTransport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hospital"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Metro"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Polyclinic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Route"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#School"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Stop"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StopsLink"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Store"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tram"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Trolleybus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#University"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#beginStop"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#endStop"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#reachesObject"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#routeTransport"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#standsNear"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#stopLink"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#buildingName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#stopName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#transportNumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#transportType"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Artvill"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bus_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bus_15"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dixy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dom_Mod"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hospital"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LETI_University"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Metro_Line_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Polyclinic"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RGUP_University"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Route_Bus_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Route_Bus_15"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Route_Metro_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Route_Tram_40"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Route_Trolleybus_34"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_1_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_2_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_2_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_3_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_4_6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_4_8"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_4_9"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_5_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_6_7"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_7_8"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SL_8_9"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#School_67"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#School_82"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tram_40"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Trolleybus_34"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1_Professora_Popova_Street"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#2_Medikov_Prospekt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#3_Big_Prospekt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#5_Kamennoostrovsky_Prospekt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#6_Lev_Tolstoy_Street"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#7_Mira_Street"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#8_Avstriyskaya_Square"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#9_Metro_Gorkovskaya"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Bus"/>
+        <Class IRI="#CityTransport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <Class IRI="#CityBuilding"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Metro"/>
+        <Class IRI="#CityTransport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Polyclinic"/>
+        <Class IRI="#CityBuilding"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#School"/>
+        <Class IRI="#CityBuilding"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Store"/>
+        <Class IRI="#CityBuilding"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tram"/>
+        <Class IRI="#CityTransport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Trolleybus"/>
+        <Class IRI="#CityTransport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#University"/>
+        <Class IRI="#CityBuilding"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Store"/>
+        <NamedIndividual IRI="#Artvill"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Bus"/>
+        <NamedIndividual IRI="#Bus_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Bus"/>
+        <NamedIndividual IRI="#Bus_15"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Store"/>
+        <NamedIndividual IRI="#Dixy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Store"/>
+        <NamedIndividual IRI="#Dom_Mod"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hospital"/>
+        <NamedIndividual IRI="#Hospital"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#University"/>
+        <NamedIndividual IRI="#LETI_University"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Metro"/>
+        <NamedIndividual IRI="#Metro_Line_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Polyclinic"/>
+        <NamedIndividual IRI="#Polyclinic"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#University"/>
+        <NamedIndividual IRI="#RGUP_University"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Route"/>
+        <NamedIndividual IRI="#Route_Bus_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Route"/>
+        <NamedIndividual IRI="#Route_Bus_15"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Route"/>
+        <NamedIndividual IRI="#Route_Metro_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Route"/>
+        <NamedIndividual IRI="#Route_Tram_40"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Route"/>
+        <NamedIndividual IRI="#Route_Trolleybus_34"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_1_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_2_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_2_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_3_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_4_6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_4_8"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_4_9"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_5_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_6_7"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_7_8"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsLink"/>
+        <NamedIndividual IRI="#SL_8_9"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#School"/>
+        <NamedIndividual IRI="#School_67"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#School"/>
+        <NamedIndividual IRI="#School_82"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Tram"/>
+        <NamedIndividual IRI="#Tram_40"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Trolleybus"/>
+        <NamedIndividual IRI="#Trolleybus_34"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#1_Professora_Popova_Street"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#2_Medikov_Prospekt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#3_Big_Prospekt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#5_Kamennoostrovsky_Prospekt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#6_Lev_Tolstoy_Street"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#7_Mira_Street"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#8_Avstriyskaya_Square"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#9_Metro_Gorkovskaya"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#Artvill"/>
+        <NamedIndividual IRI="#3_Big_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#Dixy"/>
+        <NamedIndividual IRI="#5_Kamennoostrovsky_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#Dom_Mod"/>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#Hospital"/>
+        <NamedIndividual IRI="#6_Lev_Tolstoy_Street"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#LETI_University"/>
+        <NamedIndividual IRI="#1_Professora_Popova_Street"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#Polyclinic"/>
+        <NamedIndividual IRI="#8_Avstriyskaya_Square"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#RGUP_University"/>
+        <NamedIndividual IRI="#9_Metro_Gorkovskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#routeTransport"/>
+        <NamedIndividual IRI="#Route_Bus_1"/>
+        <NamedIndividual IRI="#Bus_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Bus_1"/>
+        <NamedIndividual IRI="#SL_1_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Bus_1"/>
+        <NamedIndividual IRI="#SL_2_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Bus_1"/>
+        <NamedIndividual IRI="#SL_3_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Bus_1"/>
+        <NamedIndividual IRI="#SL_4_8"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#routeTransport"/>
+        <NamedIndividual IRI="#Route_Bus_15"/>
+        <NamedIndividual IRI="#Bus_15"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Bus_15"/>
+        <NamedIndividual IRI="#SL_1_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Bus_15"/>
+        <NamedIndividual IRI="#SL_2_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Bus_15"/>
+        <NamedIndividual IRI="#SL_4_6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Bus_15"/>
+        <NamedIndividual IRI="#SL_5_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#routeTransport"/>
+        <NamedIndividual IRI="#Route_Metro_2"/>
+        <NamedIndividual IRI="#Metro_Line_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Metro_2"/>
+        <NamedIndividual IRI="#SL_4_9"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#routeTransport"/>
+        <NamedIndividual IRI="#Route_Tram_40"/>
+        <NamedIndividual IRI="#Tram_40"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Tram_40"/>
+        <NamedIndividual IRI="#SL_4_8"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Tram_40"/>
+        <NamedIndividual IRI="#SL_5_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Tram_40"/>
+        <NamedIndividual IRI="#SL_8_9"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#routeTransport"/>
+        <NamedIndividual IRI="#Route_Trolleybus_34"/>
+        <NamedIndividual IRI="#Trolleybus_34"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Trolleybus_34"/>
+        <NamedIndividual IRI="#SL_4_6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Trolleybus_34"/>
+        <NamedIndividual IRI="#SL_5_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Trolleybus_34"/>
+        <NamedIndividual IRI="#SL_6_7"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#stopLink"/>
+        <NamedIndividual IRI="#Route_Trolleybus_34"/>
+        <NamedIndividual IRI="#SL_7_8"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_1_2"/>
+        <NamedIndividual IRI="#1_Professora_Popova_Street"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_1_2"/>
+        <NamedIndividual IRI="#2_Medikov_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_2_3"/>
+        <NamedIndividual IRI="#2_Medikov_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_2_3"/>
+        <NamedIndividual IRI="#3_Big_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_2_5"/>
+        <NamedIndividual IRI="#2_Medikov_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_2_5"/>
+        <NamedIndividual IRI="#5_Kamennoostrovsky_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_3_4"/>
+        <NamedIndividual IRI="#3_Big_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_3_4"/>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_4_6"/>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_4_6"/>
+        <NamedIndividual IRI="#6_Lev_Tolstoy_Street"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_4_8"/>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_4_8"/>
+        <NamedIndividual IRI="#8_Avstriyskaya_Square"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_4_9"/>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_4_9"/>
+        <NamedIndividual IRI="#9_Metro_Gorkovskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_5_4"/>
+        <NamedIndividual IRI="#5_Kamennoostrovsky_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_5_4"/>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_6_7"/>
+        <NamedIndividual IRI="#6_Lev_Tolstoy_Street"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_6_7"/>
+        <NamedIndividual IRI="#7_Mira_Street"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_7_8"/>
+        <NamedIndividual IRI="#7_Mira_Street"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_7_8"/>
+        <NamedIndividual IRI="#8_Avstriyskaya_Square"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#beginStop"/>
+        <NamedIndividual IRI="#SL_8_9"/>
+        <NamedIndividual IRI="#8_Avstriyskaya_Square"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#endStop"/>
+        <NamedIndividual IRI="#SL_8_9"/>
+        <NamedIndividual IRI="#9_Metro_Gorkovskaya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#School_67"/>
+        <NamedIndividual IRI="#2_Medikov_Prospekt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#standsNear"/>
+        <NamedIndividual IRI="#School_82"/>
+        <NamedIndividual IRI="#7_Mira_Street"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#Artvill"/>
+        <Literal>Артвилль</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportNumber"/>
+        <NamedIndividual IRI="#Bus_1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportType"/>
+        <NamedIndividual IRI="#Bus_1"/>
+        <Literal>Автобус</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportNumber"/>
+        <NamedIndividual IRI="#Bus_15"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportType"/>
+        <NamedIndividual IRI="#Bus_15"/>
+        <Literal>Автобус</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#Dixy"/>
+        <Literal>Дикси</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#Dom_Mod"/>
+        <Literal>Дом Мод</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#Hospital"/>
+        <Literal>ПСПбГМУ им. И. П. Павлова Минздрава России</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#LETI_University"/>
+        <Literal>СПБГЭТУ &quot;ЛЭТИ&quot;</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportNumber"/>
+        <NamedIndividual IRI="#Metro_Line_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportType"/>
+        <NamedIndividual IRI="#Metro_Line_2"/>
+        <Literal>Метро</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#Polyclinic"/>
+        <Literal>Центр медицинской профилактики</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#RGUP_University"/>
+        <Literal>ФГБОУВО &quot;РГУП&quot;</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#School_67"/>
+        <Literal>Гимназия №67</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#buildingName"/>
+        <NamedIndividual IRI="#School_82"/>
+        <Literal>Лицей №82</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportNumber"/>
+        <NamedIndividual IRI="#Tram_40"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">40</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportType"/>
+        <NamedIndividual IRI="#Tram_40"/>
+        <Literal>Трамвай</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportNumber"/>
+        <NamedIndividual IRI="#Trolleybus_34"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">34</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#transportType"/>
+        <NamedIndividual IRI="#Trolleybus_34"/>
+        <Literal>Троллейбус</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#1_Professora_Popova_Street"/>
+        <Literal>Улица Профессора Попова</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#2_Medikov_Prospekt"/>
+        <Literal>Проспект Медиков</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#3_Big_Prospekt"/>
+        <Literal>Большой проспект</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#4_Metro_Petrogradskaya"/>
+        <Literal>Метро Петроградская</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#5_Kamennoostrovsky_Prospekt"/>
+        <Literal>Каменноостровский проспект</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#6_Lev_Tolstoy_Street"/>
+        <Literal>Улица Льва Толстого</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#7_Mira_Street"/>
+        <Literal>Улица Мира</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#8_Avstriyskaya_Square"/>
+        <Literal>Австрийская площадь</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#9_Metro_Gorkovskaya"/>
+        <Literal>Метро Горьковская</Literal>
+    </DataPropertyAssertion>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#beginStop"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#endStop"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#routeTransport"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#beginStop"/>
+        <Class IRI="#StopsLink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#endStop"/>
+        <Class IRI="#StopsLink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#reachesObject"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#routeTransport"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#standsNear"/>
+        <Class IRI="#CityBuilding"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#stopLink"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#beginStop"/>
+        <Class IRI="#Stop"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#endStop"/>
+        <Class IRI="#Stop"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#reachesObject"/>
+        <Class IRI="#CityBuilding"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#routeTransport"/>
+        <Class IRI="#CityTransport"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#standsNear"/>
+        <Class IRI="#Stop"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#stopLink"/>
+        <Class IRI="#StopsLink"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#buildingName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#stopName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#transportNumber"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#transportType"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#buildingName"/>
+        <Class IRI="#CityBuilding"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#stopName"/>
+        <Class IRI="#Stop"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#transportNumber"/>
+        <Class IRI="#CityTransport"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#transportType"/>
+        <Class IRI="#CityTransport"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#buildingName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#stopName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#transportNumber"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#transportType"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Правило определения, какие маршруты “доезжают” до объекта</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>reachesObject_rule</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Route"/>
+                <Variable IRI="#r"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#StopsLink"/>
+                <Variable IRI="#sl"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Stop"/>
+                <Variable IRI="#s"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#CityBuilding"/>
+                <Variable IRI="#b"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#stopLink"/>
+                <Variable IRI="#r"/>
+                <Variable IRI="#sl"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#endStop"/>
+                <Variable IRI="#sl"/>
+                <Variable IRI="#s"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#standsNear"/>
+                <Variable IRI="#b"/>
+                <Variable IRI="#s"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#reachesObject"/>
+                <Variable IRI="#r"/>
+                <Variable IRI="#b"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
