@@ -1,0 +1,649 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/TransportRoutes"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/ontologies/TransportRoutes">
+    <Prefix name="" IRI="http://www.semanticweb.org/ontologies/TransportRoutes"/>
+    <Prefix name="tr" IRI="http://www.semanticweb.org/ontologies/TransportRoutes#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+
+    <!-- ===== КЛАССЫ ТРАНСПОРТА ===== -->
+    <Declaration>
+        <Class IRI="#CityTransport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tram"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Trolleybus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Metro"/>
+    </Declaration>
+
+    <!-- ===== КЛАССЫ МАРШРУТОВ И ОСТАНОВОК ===== -->
+    <Declaration>
+        <Class IRI="#Route"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Stop"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StopsLink"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TransferPoint"/>
+    </Declaration>
+
+    <!-- ===== ГОРОДСКИЕ ОБЪЕКТЫ ===== -->
+    <Declaration>
+        <Class IRI="#CityObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicalFacility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hospital"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Polyclinic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EducationalFacility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#School"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#University"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Store"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ShoppingCenter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Park"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Square"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Garden"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monument"/>
+    </Declaration>
+
+    <!-- ===== ИЕРАРХИЯ ТРАНСПОРТА ===== -->
+    <SubClassOf>
+        <Class IRI="#Bus"/>
+        <Class IRI="#CityTransport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tram"/>
+        <Class IRI="#CityTransport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Trolleybus"/>
+        <Class IRI="#CityTransport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Metro"/>
+        <Class IRI="#CityTransport"/>
+    </SubClassOf>
+
+    <!-- ===== ИЕРАРХИЯ ГОРОДСКИХ ОБЪЕКТОВ ===== -->
+    <SubClassOf>
+        <Class IRI="#MedicalFacility"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <Class IRI="#MedicalFacility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Polyclinic"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Polyclinic"/>
+        <Class IRI="#MedicalFacility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EducationalFacility"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#School"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#School"/>
+        <Class IRI="#EducationalFacility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#University"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#University"/>
+        <Class IRI="#EducationalFacility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Store"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ShoppingCenter"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Park"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Square"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Garden"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monument"/>
+        <Class IRI="#CityObject"/>
+    </SubClassOf>
+
+    <!-- TransferPoint — подкласс Stop (пересадочная остановка) -->
+    <SubClassOf>
+        <Class IRI="#TransferPoint"/>
+        <Class IRI="#Stop"/>
+    </SubClassOf>
+
+    <!-- ===== ОБЪЕКТНЫЕ СВОЙСТВА ===== -->
+    <Declaration>
+        <ObjectProperty IRI="#beginStop"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#endStop"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#stopLink"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#routeTransport"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#standsNear"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#reachesObject"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTransferStop"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#transferTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#reachesObjectViaTransfer"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#connectsObjects"/>
+    </Declaration>
+
+    <!-- Функциональность -->
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#beginStop"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#endStop"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#routeTransport"/>
+    </FunctionalObjectProperty>
+
+    <!-- Domain и Range для объектных свойств -->
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#beginStop"/>
+        <Class IRI="#StopsLink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#beginStop"/>
+        <Class IRI="#Stop"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#endStop"/>
+        <Class IRI="#StopsLink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#endStop"/>
+        <Class IRI="#Stop"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#stopLink"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#stopLink"/>
+        <Class IRI="#StopsLink"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#routeTransport"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#routeTransport"/>
+        <Class IRI="#CityTransport"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#standsNear"/>
+        <Class IRI="#CityObject"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#standsNear"/>
+        <Class IRI="#Stop"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#reachesObject"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#reachesObject"/>
+        <Class IRI="#CityObject"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasTransferStop"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTransferStop"/>
+        <Class IRI="#Stop"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#transferTo"/>
+        <Class IRI="#Stop"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#transferTo"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#reachesObjectViaTransfer"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#reachesObjectViaTransfer"/>
+        <Class IRI="#CityObject"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#connectsObjects"/>
+        <Class IRI="#Route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#connectsObjects"/>
+        <Class IRI="#CityObject"/>
+    </ObjectPropertyRange>
+
+    <!-- ===== DATA PROPERTIES ===== -->
+    <Declaration>
+        <DataProperty IRI="#stopName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#objectName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#objectCategory"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#latitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#longitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#osmId"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#routeRef"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#stopOrder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#transportType"/>
+    </Declaration>
+
+    <!-- Domain и Range для data properties -->
+    <DataPropertyDomain>
+        <DataProperty IRI="#stopName"/>
+        <Class IRI="#Stop"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#stopName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#objectName"/>
+        <Class IRI="#CityObject"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#objectName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#objectCategory"/>
+        <Class IRI="#CityObject"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#objectCategory"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#routeRef"/>
+        <Class IRI="#Route"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#routeRef"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#transportType"/>
+        <Class IRI="#CityTransport"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#transportType"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#stopOrder"/>
+        <Class IRI="#StopsLink"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#stopOrder"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+
+    <!-- osmId применяется к Stop и Route -->
+    <DataPropertyRange>
+        <DataProperty IRI="#osmId"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+
+    <!-- latitude и longitude применяются к Stop и CityObject -->
+    <DataPropertyRange>
+        <DataProperty IRI="#latitude"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#longitude"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+
+    <!-- AnnotationProperty для SWRL -->
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+
+    <!-- ===== SWRL-ПРАВИЛА ===== -->
+
+    <!-- Правило 1: reachesObject
+         Route(?r) ∧ StopsLink(?sl) ∧ Stop(?s) ∧ CityObject(?o)
+         ∧ stopLink(?r,?sl) ∧ endStop(?sl,?s) ∧ standsNear(?o,?s)
+         → reachesObject(?r,?o)
+    -->
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Маршрут достигает объекта, если проходит через остановку рядом с объектом</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>reachesObject_rule</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Route"/>
+                <Variable IRI="urn:swrl:var#r"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#StopsLink"/>
+                <Variable IRI="urn:swrl:var#sl"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Stop"/>
+                <Variable IRI="urn:swrl:var#s"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#CityObject"/>
+                <Variable IRI="urn:swrl:var#o"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#stopLink"/>
+                <Variable IRI="urn:swrl:var#r"/>
+                <Variable IRI="urn:swrl:var#sl"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#endStop"/>
+                <Variable IRI="urn:swrl:var#sl"/>
+                <Variable IRI="urn:swrl:var#s"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#standsNear"/>
+                <Variable IRI="urn:swrl:var#o"/>
+                <Variable IRI="urn:swrl:var#s"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#reachesObject"/>
+                <Variable IRI="urn:swrl:var#r"/>
+                <Variable IRI="urn:swrl:var#o"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+
+    <!-- Правило 2: reachesObjectViaTransfer
+         Route(?r1) ∧ Route(?r2) ∧ Stop(?s1) ∧ CityObject(?o)
+         ∧ reachesObject(?r1,?s1) ∧ transferTo(?s1,?r2) ∧ reachesObject(?r2,?o)
+         → reachesObjectViaTransfer(?r1,?o)
+    -->
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Маршрут R1 достигает объекта через пересадку: R1 доезжает до S1, с S1 пересаживаемся на R2, R2 доезжает до объекта</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>reachesObjectViaTransfer_rule</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Route"/>
+                <Variable IRI="urn:swrl:var#r1"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Route"/>
+                <Variable IRI="urn:swrl:var#r2"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Stop"/>
+                <Variable IRI="urn:swrl:var#s1"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#CityObject"/>
+                <Variable IRI="urn:swrl:var#o"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#reachesObject"/>
+                <Variable IRI="urn:swrl:var#r1"/>
+                <Variable IRI="urn:swrl:var#s1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#transferTo"/>
+                <Variable IRI="urn:swrl:var#s1"/>
+                <Variable IRI="urn:swrl:var#r2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#reachesObject"/>
+                <Variable IRI="urn:swrl:var#r2"/>
+                <Variable IRI="urn:swrl:var#o"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#reachesObjectViaTransfer"/>
+                <Variable IRI="urn:swrl:var#r1"/>
+                <Variable IRI="urn:swrl:var#o"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+
+    <!-- Правило 3: TransferPoint — остановка с двумя и более маршрутами
+         Stop(?s) ∧ Route(?r1) ∧ Route(?r2)
+         ∧ transferTo(?s,?r1) ∧ transferTo(?s,?r2) ∧ differentFrom(?r1,?r2)
+         → TransferPoint(?s)
+    -->
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Остановка является пересадочной, если с неё уходят минимум два разных маршрута</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>isTransferStop_rule</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Stop"/>
+                <Variable IRI="urn:swrl:var#s"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Route"/>
+                <Variable IRI="urn:swrl:var#r1"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Route"/>
+                <Variable IRI="urn:swrl:var#r2"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#transferTo"/>
+                <Variable IRI="urn:swrl:var#s"/>
+                <Variable IRI="urn:swrl:var#r1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#transferTo"/>
+                <Variable IRI="urn:swrl:var#s"/>
+                <Variable IRI="urn:swrl:var#r2"/>
+            </ObjectPropertyAtom>
+            <DifferentIndividualsAtom>
+                <Variable IRI="urn:swrl:var#r1"/>
+                <Variable IRI="urn:swrl:var#r2"/>
+            </DifferentIndividualsAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#TransferPoint"/>
+                <Variable IRI="urn:swrl:var#s"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+
+    <!-- Правило 4: connectsObjects
+         Route(?r) ∧ CityObject(?o1) ∧ CityObject(?o2)
+         ∧ reachesObject(?r,?o1) ∧ reachesObject(?r,?o2) ∧ differentFrom(?o1,?o2)
+         → connectsObjects(?r,?o1) ∧ connectsObjects(?r,?o2)
+    -->
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Маршрут связывает объекты, если он достигает двух разных объектов</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>connectsObjects_rule</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Route"/>
+                <Variable IRI="urn:swrl:var#r"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#CityObject"/>
+                <Variable IRI="urn:swrl:var#o1"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#CityObject"/>
+                <Variable IRI="urn:swrl:var#o2"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#reachesObject"/>
+                <Variable IRI="urn:swrl:var#r"/>
+                <Variable IRI="urn:swrl:var#o1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#reachesObject"/>
+                <Variable IRI="urn:swrl:var#r"/>
+                <Variable IRI="urn:swrl:var#o2"/>
+            </ObjectPropertyAtom>
+            <DifferentIndividualsAtom>
+                <Variable IRI="urn:swrl:var#o1"/>
+                <Variable IRI="urn:swrl:var#o2"/>
+            </DifferentIndividualsAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#connectsObjects"/>
+                <Variable IRI="urn:swrl:var#r"/>
+                <Variable IRI="urn:swrl:var#o1"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+
+</Ontology>

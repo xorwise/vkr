@@ -7,17 +7,21 @@ const TRANSPORT_COLORS = {
   Metro: '#7c3aed',
 };
 
-const BUILDING_ICONS = {
-  School: 'Школа',
-  Hospital: 'Больница',
-  Polyclinic: 'Поликлиника',
-  Store: 'Магазин',
-  University: 'Университет',
+const OBJECT_PRESETS = {
+  Hospital: 'islands#redMedicalIcon',
+  Polyclinic: 'islands#redMedicalIcon',
+  School: 'islands#blueEducationIcon',
+  University: 'islands#blueEducationIcon',
+  Store: 'islands#grayShoppingIcon',
+  ShoppingCenter: 'islands#grayShoppingIcon',
+  Park: 'islands#greenLeafIcon',
+  Square: 'islands#greenLeafIcon',
+  Garden: 'islands#greenLeafIcon',
+  Monument: 'islands#grayCircleDotIcon',
 };
 
 const SPB_CENTER = [59.9343, 30.3351];
 const DEFAULT_ZOOM = 13;
-const MAX_ROUTE_POINTS = 10;
 
 let ymapsPromise;
 
@@ -66,7 +70,16 @@ function loadYmaps(apiKey) {
 }
 
 function hasCoords(entity) {
+  // New API uses latitude/longitude; old API used lat/lon
+  if (entity.latitude !== undefined) {
+    return entity.latitude !== 0 || entity.longitude !== 0;
+  }
   return entity.lat !== 0 || entity.lon !== 0;
+}
+
+function getCoords(entity) {
+  if (entity.latitude !== undefined) return [entity.latitude, entity.longitude];
+  return [entity.lat, entity.lon];
 }
 
 function clearGeoObjects(map, objects) {
@@ -74,44 +87,23 @@ function clearGeoObjects(map, objects) {
   return [];
 }
 
-function getRouteReferencePoints(stops) {
-  const stopsWithCoords = stops.filter(hasCoords);
-  if (stopsWithCoords.length <= 2) {
-    return stopsWithCoords.map((stop) => [stop.lat, stop.lon]);
-  }
 
-  // Yandex routing becomes unstable with long stop chains, so sample anchor stops.
-  const indexes = new Set([0, stopsWithCoords.length - 1]);
-  const step = (stopsWithCoords.length - 1) / (MAX_ROUTE_POINTS - 1);
-
-  for (let i = 1; i < MAX_ROUTE_POINTS - 1; i += 1) {
-    indexes.add(Math.round(i * step));
-  }
-
-  return [...indexes]
-    .sort((left, right) => left - right)
-    .map((index) => stopsWithCoords[index])
-    .filter((stop, index, array) => index === 0 || stop.id !== array[index - 1].id)
-    .map((stop) => [stop.lat, stop.lon]);
-}
-
-export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick, onRouteClick }) {
+export function YandexMap({ stops, routes, objects, selectedRoute, selectedStop, selectedObject, onStopClick, onRouteClick }) {
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const ymapsRef = useRef(null);
   const stopMarkersRef = useRef([]);
-  const buildingMarkersRef = useRef([]);
+  const objectMarkersRef = useRef([]);
   const routeMarkersRef = useRef([]);
   const activeRouteRef = useRef(null);
-  const routeRequestIdRef = useRef(0);
   const routeMarkerLayoutRef = useRef(null);
   const selectedRouteMarkerLayoutRef = useRef(null);
   const [mapReady, setMapReady] = useState(false);
   const [routeStatus, setRouteStatus] = useState('idle');
 
   const apiKey = import.meta.env.VITE_YANDEX_MAPS_KEY || '';
-  const visibleStops = selectedRoute ? selectedRoute.stops || [] : stops;
-  const visibleBuildings = selectedRoute ? [] : buildings;
+  const visibleStops = selectedRoute ? selectedRoute.stops || [] : [];
+  const visibleObjects = selectedRoute ? [] : (objects || []);
   const visibleRoutes = selectedRoute ? [selectedRoute] : routes;
 
   useEffect(() => {
@@ -152,7 +144,6 @@ export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick
 
     return () => {
       cancelled = true;
-      routeRequestIdRef.current += 1;
 
       if (mapRef.current) {
         mapRef.current.destroy();
@@ -161,7 +152,7 @@ export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick
 
       ymapsRef.current = null;
       stopMarkersRef.current = [];
-      buildingMarkersRef.current = [];
+      objectMarkersRef.current = [];
       routeMarkersRef.current = [];
       activeRouteRef.current = null;
       setMapReady(false);
@@ -180,16 +171,12 @@ export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick
     stopMarkersRef.current = clearGeoObjects(map, stopMarkersRef.current);
 
     visibleStops.filter(hasCoords).forEach((stop) => {
+      const coords = getCoords(stop);
       const marker = new ymaps.Placemark(
-        [stop.lat, stop.lon],
-        {
-          hintContent: stop.name,
-        },
-        {
-          preset: 'islands#blueCircleDotIcon',
-        }
+        coords,
+        { hintContent: stop.name || stop.id },
+        { preset: stop.transferPoint ? 'islands#redCircleDotIcon' : 'islands#blueCircleDotIcon' }
       );
-
       marker.events.add('click', () => onStopClick(stop));
       map.geoObjects.add(marker);
       stopMarkersRef.current.push(marker);
@@ -197,30 +184,25 @@ export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick
   }, [mapReady, visibleStops, onStopClick]);
 
   useEffect(() => {
-    if (!mapReady || !mapRef.current || !ymapsRef.current) {
-      return;
-    }
+    if (!mapReady || !mapRef.current || !ymapsRef.current) return;
 
     const map = mapRef.current;
     const ymaps = ymapsRef.current;
 
-    buildingMarkersRef.current = clearGeoObjects(map, buildingMarkersRef.current);
+    objectMarkersRef.current = clearGeoObjects(map, objectMarkersRef.current);
 
-    visibleBuildings.filter(hasCoords).forEach((building) => {
+    visibleObjects.filter(hasCoords).forEach((obj) => {
+      const coords = getCoords(obj);
+      const preset = OBJECT_PRESETS[obj.type] || 'islands#grayCircleDotIcon';
       const marker = new ymaps.Placemark(
-        [building.lat, building.lon],
-        {
-          hintContent: `${building.name} (${BUILDING_ICONS[building.type] || building.type})`,
-        },
-        {
-          preset: 'islands#grayCircleDotIcon',
-        }
+        coords,
+        { hintContent: `${obj.name || obj.id} (${obj.type})`, balloonContent: obj.name || obj.id },
+        { preset }
       );
-
       map.geoObjects.add(marker);
-      buildingMarkersRef.current.push(marker);
+      objectMarkersRef.current.push(marker);
     });
-  }, [mapReady, visibleBuildings]);
+  }, [mapReady, visibleObjects]);
 
   useEffect(() => {
     if (!mapReady || !mapRef.current || !ymapsRef.current) {
@@ -233,28 +215,31 @@ export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick
     routeMarkersRef.current = clearGeoObjects(map, routeMarkersRef.current);
 
     visibleRoutes.forEach((route) => {
-      const stopsWithCoords = route.stops.filter(hasCoords);
+      const stopsWithCoords = (route.stops || []).filter(hasCoords);
       if (stopsWithCoords.length < 2) {
         return;
       }
 
       const middleStop = stopsWithCoords[Math.floor(stopsWithCoords.length / 2)];
       const isSelected = selectedRoute?.id === route.id;
-      const color = TRANSPORT_COLORS[route.transport.type] || '#64748b';
+      const color = TRANSPORT_COLORS[route.transport?.type] || '#64748b';
+      const coords = getCoords(middleStop);
       const marker = new ymaps.Placemark(
-        [middleStop.lat, middleStop.lon],
+        coords,
         {
           color,
-          number: route.transport.number,
-          hintContent: `Маршрут ${route.transport.number}`,
+          number: route.transport?.number,
+          hintContent: `Маршрут ${route.transport?.number}`,
         },
         {
           iconLayout: isSelected ? selectedRouteMarkerLayoutRef.current : routeMarkerLayoutRef.current,
+          // iconOffset centres the marker on the coordinate point.
+          // The marker is 34px tall; offset moves top-left corner so centre lands on point.
           iconOffset: [-17, -17],
           iconShape: {
             type: 'Circle',
-            coordinates: [0, 0],
-            radius: 20,
+            coordinates: [17, 17],
+            radius: 17,
           },
         }
       );
@@ -265,6 +250,21 @@ export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick
     });
   }, [mapReady, visibleRoutes, selectedRoute, onRouteClick]);
 
+  // Centre map on selected stop (from sidebar click)
+  useEffect(() => {
+    if (!mapReady || !mapRef.current || !selectedStop) return;
+    if (!hasCoords(selectedStop)) return;
+    const coords = getCoords(selectedStop);
+    mapRef.current.setCenter(coords, 15, { duration: 300 });
+  }, [mapReady, selectedStop]);
+
+  useEffect(() => {
+    if (!mapReady || !mapRef.current || !selectedObject) return;
+    if (!hasCoords(selectedObject)) return;
+    const coords = getCoords(selectedObject);
+    mapRef.current.setCenter(coords, 16, { duration: 300 });
+  }, [mapReady, selectedObject]);
+
   useEffect(() => {
     if (!mapReady || !mapRef.current || !ymapsRef.current) {
       return undefined;
@@ -272,8 +272,6 @@ export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick
 
     const map = mapRef.current;
     const ymaps = ymapsRef.current;
-    const requestId = routeRequestIdRef.current + 1;
-    routeRequestIdRef.current = requestId;
 
     if (activeRouteRef.current) {
       map.geoObjects.remove(activeRouteRef.current);
@@ -285,66 +283,44 @@ export function YandexMap({ stops, routes, buildings, selectedRoute, onStopClick
       return undefined;
     }
 
-    const referencePoints = getRouteReferencePoints(selectedRoute.stops || []);
-    if (referencePoints.length < 2) {
+    const coords = (selectedRoute.stops || []).filter(hasCoords).map(getCoords);
+    if (coords.length < 2) {
       setRouteStatus('error');
       return undefined;
     }
 
-    let cancelled = false;
-    const color = TRANSPORT_COLORS[selectedRoute.transport.type] || '#64748b';
+    const color = TRANSPORT_COLORS[selectedRoute.transport?.type] || '#64748b';
 
-    setRouteStatus('loading');
-
-    ymaps.route(referencePoints, {
-      multiRoute: true,
-      routingMode: 'masstransit',
-    }).then(
-      (multiRoute) => {
-        if (cancelled || requestId !== routeRequestIdRef.current || !mapRef.current) {
-          return;
-        }
-
-        multiRoute.options.set({
-          boundsAutoApply: true,
-          zoomMargin: [40, 380, 40, 40],
-          wayPointVisible: false,
-          viaPointVisible: false,
-          routeStrokeColor: color,
-          routeStrokeOpacity: 0.3,
-          routeStrokeWidth: 4,
-          routeActiveStrokeColor: color,
-          routeActiveStrokeOpacity: 0.95,
-          routeActiveStrokeWidth: 6,
-        });
-
-        mapRef.current.geoObjects.add(multiRoute);
-        activeRouteRef.current = multiRoute;
-        setRouteStatus('ready');
-      },
-      (error) => {
-        if (cancelled || requestId !== routeRequestIdRef.current) {
-          return;
-        }
-
-        console.error('Yandex route build error:', error);
-        setRouteStatus('error');
+    // Draw a simple polyline through stop coordinates — reliable and instant
+    const polyline = new ymaps.Polyline(
+      coords,
+      { hintContent: `Маршрут ${selectedRoute.transport?.number}` },
+      {
+        strokeColor: color,
+        strokeWidth: 5,
+        strokeOpacity: 0.85,
       }
     );
 
-    return () => {
-      cancelled = true;
-    };
+    map.geoObjects.add(polyline);
+    activeRouteRef.current = polyline;
+
+    // Fit map to the route bounds
+    map.setBounds(polyline.geometry.getBounds(), {
+      checkZoomRange: true,
+      zoomMargin: [40, 380, 40, 40],
+    });
+
+    setRouteStatus('ready');
+
+    return undefined;
   }, [mapReady, selectedRoute]);
 
   return (
     <>
       <div ref={containerRef} className="map-container" />
-      {selectedRoute && routeStatus === 'loading' && (
-        <div className="map-route-status">Yandex строит маршрут по выбранным остановкам…</div>
-      )}
       {selectedRoute && routeStatus === 'error' && (
-        <div className="map-route-status error">Yandex не смог построить маршрут для этой последовательности остановок.</div>
+        <div className="map-route-status error">Недостаточно остановок с координатами для отображения маршрута.</div>
       )}
     </>
   );
